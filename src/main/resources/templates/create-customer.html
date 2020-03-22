@@ -23,7 +23,7 @@
             <div th:if="${#fields.hasErrors('email')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('email')}">
-                        <span th:text="${err}"></span>
+                        <span class="text-danger" th:text="${err}"></span>
                     </li>
                 </ul>
             </div>
@@ -34,7 +34,7 @@
             <div>
                 <ul>
                     <li th:each="err : ${#fields.errors('name')}">
-                        <span th:text="${err}"></span>
+                        <span class="text-danger" th:text="${err}"></span>
                     </li>
                 </ul>
             </div>
@@ -48,6 +48,13 @@
                 <label for="zipcode">Zipcode</label>
                 <input class="form-control" type="text" id="zipcode" th:field="*{zipCode}" placeholder="Enter your zipcode...">
             </div>
+            <div>
+                <ul>
+                    <li th:each="err : ${#fields.errors('zipCode')}">
+                        <span class="text-danger" th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
 
             <div class="form-group">
                 <label for="city">City</label>
@@ -55,13 +62,13 @@
             </div>
 
             <div class="form-group">
-                <label for="phonenumber">Phonenumber <span class="text-danger"> *</span></label>
+                <label for="phonenumber">Phone number <span class="text-danger"> *</span></label>
                 <input class="form-control" type="text" id="phonenumber" th:field="*{phoneNumber}" placeholder="Enter your number..." required>
             </div>
             <div>
                 <ul>
                     <li th:each="err : ${#fields.errors('phoneNumber')}">
-                        <span th:text="${err}"></span>
+                        <span class="text-danger" th:text="${err}"></span>
                     </li>
                 </ul>
             </div>
@@ -73,7 +80,7 @@
             <div th:if="${#fields.hasErrors('password')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('password')}">
-                        <span th:text="${err}"></span>
+                        <span class="text-danger" th:text="${err}"></span>
                     </li>
                 </ul>
             </div>
@@ -84,7 +91,7 @@
             <div th:if="${#fields.hasErrors('passwordConfirm')}">
                 <ul>
                     <li th:each="err : ${#fields.errors('passwordConfirm')}">
-                        <span th:text="${err}"></span>
+                        <span class="text-danger" th:text="${err}"></span>
                     </li>
                 </ul>
             </div>

@@ -19,6 +19,8 @@ public class CustomerFormDto {
     private String name;
 
     private String streetAddress;
+
+    @Pattern(regexp = ZIPCODE_REGEX, message = ZIPCODE_MESSAGE)
     private String zipCode;
     private String city;
 
@@ -27,11 +29,10 @@ public class CustomerFormDto {
     private String phoneNumber;
 
     @NotBlank(message = FIELD_REQUIRED_MESSAGE)
-    @Pattern(regexp = PASSWORD_REGEX, message = PASSWORD_MESSAGE)
+    @Pattern(regexp = PASSWORD_REGEX, flags = Pattern.Flag.CASE_INSENSITIVE, message = PASSWORD_MESSAGE)
     private String password;
 
     @NotBlank(message = FIELD_REQUIRED_MESSAGE)
-    @Pattern(regexp = PASSWORD_REGEX, message = PASSWORD_MESSAGE)
     private String passwordConfirm;
 
     public String getEmail() {
