@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"/>
+    <meta charset="UTF-8">
+    <title>Create customer</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h3>Create a customer</h3>
+            <p class="text-danger">* is required</p>
+        </div>
+        <form th:action="@{/customers/process}" method="post" th:object="${form}">
+            <div class="form-group">
+                <label for="email">Email: <span class="text-danger"> *</span></label>
+                <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Enter your email..." required>
+            </div>
+            <div th:if="${#fields.hasErrors('email')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('email')}">
+                        <span th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="name">Name: <span class="text-danger"> *</span></label>
+                <input class="form-control" type="text" id="name" th:field="*{name}" placeholder="Enter your name..." required>
+            </div>
+            <div>
+                <ul>
+                    <li th:each="err : ${#fields.errors('name')}">
+                        <span th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="street">Street</label>
+                <input class="form-control" type="text" id="street" th:field="*{streetAddress}" placeholder="Enter your street...">
+            </div>
+
+            <div class="form-group">
+                <label for="zipcode">Zipcode</label>
+                <input class="form-control" type="text" id="zipcode" th:field="*{zipCode}" placeholder="Enter your zipcode...">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City:</label>
+                <input class="form-control" type="text" id="city" th:field="*{city}" placeholder="Enter your city...">
+            </div>
+
+            <div class="form-group">
+                <label for="phonenumber">Phonenumber <span class="text-danger"> *</span></label>
+                <input class="form-control" type="text" id="phonenumber" th:field="*{phoneNumber}" placeholder="Enter your number..." required>
+            </div>
+            <div>
+                <ul>
+                    <li th:each="err : ${#fields.errors('phoneNumber')}">
+                        <span th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password <span class="text-danger"> *</span></label>
+                <input class="form-control" type="password" id="password" th:field="*{password}" placeholder="Choose password..."required/>
+            </div>
+            <div th:if="${#fields.hasErrors('password')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('password')}">
+                        <span th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <label for="confirmpassword">Validate password <span class="text-danger"> *</span></label>
+                <input class="form-control" type="password" id="confirmpassword" th:field="*{passwordConfirm}" placeholder="Confirm password..."required/>
+            </div>
+            <div th:if="${#fields.hasErrors('passwordConfirm')}">
+                <ul>
+                    <li th:each="err : ${#fields.errors('passwordConfirm')}">
+                        <span th:text="${err}"></span>
+                    </li>
+                </ul>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-secondary" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

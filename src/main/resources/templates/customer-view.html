@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"/>
+    <meta charset="UTF-8">
+    <title>Customer details</title>
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h2 class="">Customer details for <span th:text="${customer.email}"></span></h2>
+            <a class="btn btn-secondary" th:href="@{/customers}">Go back</a>
+        </div>
+        <table class="table">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Name</th>
+                <th scope="col">Street</th>
+                <th scope="col">Zipcode</th>
+                <th scope="col">City</th>
+                <th scope="col">Phonenumber</th>
+            </tr>
+            <tr>
+                <td th:text="${customer.customerId}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.details.name}"></td>
+                <td th:text="${customer.details.streetAddress}"></td>
+                <td th:text="${customer.details.zipCode}"></td>
+                <td th:text="${customer.details.city}"></td>
+                <td th:text="${customer.details.phoneNumber}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

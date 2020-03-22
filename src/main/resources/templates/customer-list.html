@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.css}"/>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h2>Customers</h2>
+            <a class="btn btn-secondary" th:href="@{customers/create}">Create new customer</a>
+        </div>
+        <div th:if="${customers.isEmpty()}">
+            <h3>There are no customers</h3>
+        </div>
+        <div th:if="${!customers.isEmpty()}">
+            <table class="table">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Registartion date</th>
+                    <th scope="col">State</th>
+                    <th scope="col">See details</th>
+                </tr>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.customerId}"></td>
+                    <td th:text="${customer.email}"></td>
+                    <td th:text="${customer.regDate}"></td>
+                    <td th:if="${customer.active}"><span>Active</span></td>
+                    <td th:if="${!customer.active}"><span>Idle</span></td>
+                    <td><a th:href="@{customers/details(id=${customer.getCustomerId()})}">Details</a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
